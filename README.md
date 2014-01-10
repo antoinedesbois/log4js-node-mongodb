@@ -49,6 +49,9 @@ log4js.configure({
             type: 'log4js-node-mongodb',
             connectionString: 'localhost:27017/logs',
             category: 'cheese'
+            instance_id: 'local',
+            public_hostname: 'myHostname',
+            process_name: 'myProcess
         }
     ]
 });
@@ -62,7 +65,10 @@ The log data is stored in the following format.
     timestamp: loggingEvent.startTime,
     data: loggingEvent.data,
     level: loggingEvent.level,
-    category: loggingEvent.logger.category
+    category: loggingEvent.logger.category,
+    instance_id: config.instance_id, //From the configure options
+    public_hostname: config.hostname,
+    process_name: config.processName
 }
 ```
 
